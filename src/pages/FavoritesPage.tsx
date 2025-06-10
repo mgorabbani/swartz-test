@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useFavorites } from "../context/FavoritesContext";
-import MovieList from "../components/MovieList";
+import DetailedMovieList from "../components/DetailedMovieList";
 import SearchFilters from "../components/SearchFilters";
 import { useFavoritesFilters } from "../utils/useFavoritesFilters";
 
@@ -61,7 +61,7 @@ const FavoritesPage: React.FC = () => {
         </p>
       </div>
 
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {state.favorites.length > 0 && (
           <div className="flex flex-col sm:flex-row items-start justify-end gap-2 mb-6">
             <SearchFilters
@@ -74,7 +74,7 @@ const FavoritesPage: React.FC = () => {
           </div>
         )}
 
-        <MovieList
+        <DetailedMovieList
           movies={filteredMovies}
           loading={false}
           error={null}
