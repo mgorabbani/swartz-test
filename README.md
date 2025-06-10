@@ -1,54 +1,85 @@
-# React + TypeScript + Vite
+# React Movie Search Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a movie search and details application built with React, TypeScript, and Vite. It allows users to search for movies, view detailed information, and save their favorite movies.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **🎬 Movie Search**: Search for movies by title with a debounced search input.
+- **🍿 Popular Movies**: A list of popular movies is displayed on the initial load.
+- **📄 Movie Details**: View a comprehensive details page for each movie, including plot, cast, director, genres, and more.
+- **❤️ Favorites**: Add or remove movies from a personal favorites list, which persists across sessions using `localStorage`.
+- **🔀 Advanced Filtering**: Filter search results by genre, release year range, and minimum rating.
+- **🔢 Pagination**: Navigate through search results with a complete pagination system.
+- ** LOADING & ERROR STATES**: Smooth user experience with skeleton loaders and clear error messages.
+- **CACHE & CANCELLATION**: Search requests are cached and previous requests are cancelled to prevent race conditions.
+- **📱 Responsive Design**: The application is designed to be usable on various screen sizes.
+- **🐛 Error Boundary**: A global error boundary prevents the entire app from crashing due to rendering errors.
 
-## Expanding the ESLint configuration
+## 🛠️ Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Framework**: [React](https://reactjs.org/) (v18)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Routing**: [React Router DOM](https://reactrouter.com/) (v6)
+- **State Management**: React Hooks (`useState`, `useEffect`, `useReducer`, `useContext`, `useCallback`, `useMemo`)
+- **Styling**: Plain CSS with a modern, dark theme.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🚀 Getting Started
+
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+You need to have [Node.js](https://nodejs.org/) (version 16 or later) and [npm](https://www.npmjs.com/) installed on your machine.
+
+### Installation
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/your-username/react-movie-app.git
+    cd react-movie-app
+    ```
+
+2.  **Install the dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+### Running the Application
+
+Once the dependencies are installed, you can run the development server:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This will start the Vite development server, and you can view the application by navigating to `http://localhost:5173` in your web browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📂 Project Structure
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+The project follows a standard feature-based folder structure:
+
 ```
+src
+├── api/             # Mock API and data
+├── assets/          # Static assets like images
+├── components/      # Reusable UI components
+├── context/         # React context for global state
+├── hooks/           # Custom React hooks (Not used, utils instead)
+├── pages/           # Page components for each route
+├── types/           # TypeScript type definitions
+├── utils/           # Utility functions and custom hooks
+├── App.css          # Global styles
+├── App.tsx          # Main application component with routing
+└── main.tsx         # Application entry point
+```
+
+## ✅ To-Do / Future Improvements
+
+- **Unit & Integration Testing**: Write tests for components and user flows using Jest and React Testing Library.
+- **Animation**: Add subtle animations and transitions to improve the user experience.
+- **Real API**: Replace the mock API with a real movie database API (e.g., TMDB).
+- **Authentication**: Add user authentication to store favorites on a server.
+- **Deployment**: Deploy the application to a hosting service like Vercel or Netlify.
