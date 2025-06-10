@@ -75,11 +75,3 @@ src
 ├── App.tsx          # Main application component with routing
 └── main.tsx         # Application entry point
 ```
-
-## ✅ To-Do / Future Improvements
-
-- **Unit & Integration Testing**: Write tests for components and user flows using Jest and React Testing Library.
-- **Animation**: Add subtle animations and transitions to improve the user experience.
-- **Real API**: Replace the mock API with a real movie database API (e.g., TMDB).
-- **Authentication**: Add user authentication to store favorites on a server.
-- **Deployment**: Deploy the application to a hosting service like Vercel or Netlify.
