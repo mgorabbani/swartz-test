@@ -21,18 +21,27 @@ const MovieCard: React.FC<MovieCardProps> = memo(({ movie }) => {
   );
 
   return (
-    <Link to={`/movie/${movie.id}`} className="movie-card">
-      <div className="movie-poster">
+    <Link
+      to={`/movie/${movie.id}`}
+      className="group block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl focus:shadow-xl transition-shadow duration-300 overflow-hidden"
+    >
+      <div className="relative">
         <img
           src={movie.poster}
           alt={`${movie.title} poster`}
           onError={handleImageError}
           loading="lazy"
+          className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-300"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
       </div>
-      <div className="movie-info">
-        <h3 className="movie-title">{movie.title}</h3>
-        <p className="movie-year">{formatDate(movie.releaseDate)}</p>
+      <div className="p-4">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+          {movie.title}
+        </h3>
+        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          {formatDate(movie.releaseDate)}
+        </p>
       </div>
     </Link>
   );

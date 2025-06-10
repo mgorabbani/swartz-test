@@ -29,31 +29,30 @@ const SearchSuggestions: React.FC<SearchSuggestionsProps> = memo(
     }
 
     return (
-      <div className="search-suggestions">
-        <div className="search-suggestions-header">
-          <span className="search-suggestions-title">Recent Searches</span>
+      <div className="absolute z-10 w-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl">
+        <div className="flex justify-between items-center px-4 py-2 border-b border-gray-200 dark:border-gray-700">
+          <span className="text-sm font-semibold text-gray-600 dark:text-gray-300">
+            Recent Searches
+          </span>
           <button
             onClick={handleClearHistory}
-            className="clear-history-btn"
+            className="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500"
             aria-label="Clear search history"
             type="button"
           >
             Clear
           </button>
         </div>
-        <ul className="search-suggestions-list">
+        <ul className="py-1">
           {suggestions.map((suggestion, index) => (
-            <li
-              key={`${suggestion}-${index}`}
-              className="search-suggestion-item"
-            >
+            <li key={`${suggestion}-${index}`}>
               <button
                 onClick={() => handleSuggestionClick(suggestion)}
-                className="search-suggestion-btn"
+                className="w-full text-left px-4 py-2 flex items-center text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                 type="button"
               >
-                <span className="suggestion-icon">🔍</span>
-                <span className="suggestion-text">{suggestion}</span>
+                <span className="mr-3">🔍</span>
+                <span>{suggestion}</span>
               </button>
             </li>
           ))}

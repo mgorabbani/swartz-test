@@ -68,31 +68,35 @@ const Pagination: React.FC<PaginationProps> = memo(
     };
 
     return (
-      <div className="pagination-container">
-        <div className="pagination-info">
-          <p className="pagination-text">
-            Showing {startIndex}-{endIndex} of {totalItems} movies
+      <div className="flex flex-col md:flex-row items-center justify-between mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 gap-4">
+        <div className="text-sm text-gray-700 dark:text-gray-300">
+          <p>
+            Showing <span className="font-medium">{startIndex}</span> to{" "}
+            <span className="font-medium">{endIndex}</span> of{" "}
+            <span className="font-medium">{totalItems}</span> movies
           </p>
         </div>
 
-        <div className="pagination-controls">
+        <div className="flex items-center gap-2">
           <button
             onClick={onPreviousPage}
             disabled={!hasPreviousPage}
-            className="pagination-btn pagination-btn-nav"
+            className="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
             aria-label="Previous page"
           >
             ← Previous
           </button>
 
-          <div className="pagination-pages">
+          <div className="flex items-center gap-1">
             {getPageNumbers().map((page, index) => (
               <React.Fragment key={index}>
                 {typeof page === "number" ? (
                   <button
                     onClick={() => onPageChange(page)}
-                    className={`pagination-btn pagination-btn-page ${
-                      page === currentPage ? "active" : ""
+                    className={`px-3 py-2 text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${
+                      page === currentPage
+                        ? "bg-indigo-600 text-white border-indigo-600"
+                        : "text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
                     }`}
                     aria-label={`Go to page ${page}`}
                     aria-current={page === currentPage ? "page" : undefined}
@@ -100,7 +104,10 @@ const Pagination: React.FC<PaginationProps> = memo(
                     {page}
                   </button>
                 ) : (
-                  <span className="pagination-ellipsis" aria-hidden="true">
+                  <span
+                    className="px-3 py-2 text-sm text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                  >
                     {page}
                   </span>
                 )}
@@ -111,7 +118,7 @@ const Pagination: React.FC<PaginationProps> = memo(
           <button
             onClick={onNextPage}
             disabled={!hasNextPage}
-            className="pagination-btn pagination-btn-nav"
+            className="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
             aria-label="Next page"
           >
             Next →

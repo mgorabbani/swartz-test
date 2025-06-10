@@ -63,24 +63,29 @@ const HomePage: React.FC = () => {
   }, [clearSearchHistory]);
 
   return (
-    <div className="home-page">
-      <div className="search-section">
-        <h1 className="page-title">🎬 Movie Search</h1>
-        <p className="page-subtitle">
+    <div className="container mx-auto px-4 py-8">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+          🎬 Movie Search
+        </h1>
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Discover your favorite movies and save them to your collection
         </p>
+      </div>
 
-        <div className="search-controls">
-          <div className="search-container">
-            <div onFocus={handleSearchFocus} onBlur={handleSearchBlur}>
-              <SearchBar
-                query={query}
-                onQueryChange={handleQueryChange}
-                loading={loading}
-                placeholder="Search for movies by title, director, actor, or genre..."
-              />
-            </div>
-
+      <div className="max-w-4xl mx-auto relative">
+        <div className="flex flex-col sm:flex-row items-start gap-2">
+          <div
+            className="relative w-full sm:flex-grow"
+            onFocus={handleSearchFocus}
+            onBlur={handleSearchBlur}
+          >
+            <SearchBar
+              query={query}
+              onQueryChange={handleQueryChange}
+              loading={loading}
+              placeholder="Search for movies by title, director, actor, or genre..."
+            />
             <SearchSuggestions
               suggestions={searchHistory}
               onSuggestionClick={handleSuggestionClick}
@@ -88,7 +93,6 @@ const HomePage: React.FC = () => {
               visible={showSuggestions}
             />
           </div>
-
           <SearchFilters
             filters={filters}
             onFiltersChange={setFilters}
@@ -97,14 +101,14 @@ const HomePage: React.FC = () => {
             onToggle={toggleFilters}
           />
         </div>
-      </div>
 
-      <MovieList
-        movies={filteredMovies}
-        loading={loading}
-        error={error}
-        hasSearched={hasSearched}
-      />
+        <MovieList
+          movies={filteredMovies}
+          loading={loading}
+          error={error}
+          hasSearched={hasSearched}
+        />
+      </div>
     </div>
   );
 };

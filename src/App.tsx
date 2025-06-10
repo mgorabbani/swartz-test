@@ -6,7 +6,6 @@ import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import MovieDetailsPage from "./pages/MovieDetailsPage";
 import FavoritesPage from "./pages/FavoritesPage";
-import "./App.css";
 
 function App() {
   return (
